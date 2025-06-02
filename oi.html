@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Formulário de Nome</title>
+		<link rel="stylesheet" href="./src/style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="form-wrapper">
+				<h1>mySchool</h1>
+				<div class="setName">
+					<label for="userName">Seu Nome:</label>
+					<input
+						type="text"
+						class="name"
+						id="userName"
+						name="userName"
+						required
+					/>
+				</div>
+				<input type="submit" class="enviar" value="ENVIAR" />
+
+				<div id="message" class="message hidden"></div>
+			</div>
+		</div>
+
+		<script>
+			const name = localStorage.getItem("name");
+			if(name == "" || name == null){
+				const button = document.querySelector(".enviar");
+				const name = document.querySelector(".name");
+	
+				button.addEventListener("click", () => {
+					if (name.value.length > 0) {
+						localStorage.setItem("name", name.value);
+						console.log(localStorage.getItem("name"));
+						window.location.assign("./index.html");
+					} else {
+						const notify = document.createElement("div");
+						const body = document.querySelector("body");
+	
+						notify.innerHTML = `
+							<h2>Por favor, coloque um nome :)</h2>
+							<button class="ok">ok</button>      
+						`;
+						notify.style.display = "flex";
+						notify.className = "notify";
+	
+	  
+						body.appendChild(notify);
+	
+						const button = document.querySelector(".ok");
+						button.addEventListener("click", () => {
+							notify.innerHTML = ""
+							notify.style.display = "none";
+						});
+					}
+				});
+			}else{
+				window.location.assign("./index.html");
+			}
+		</script>
+	</body>
+</html>

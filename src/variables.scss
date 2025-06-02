@@ -1,0 +1,30 @@
+$bgColor: rgb(17, 21, 81);
+$fontColor: rgb(255, 255, 255);
+$font: "calibri";
+$color1: rgb(255, 118, 38);
+$color2: rgb(38, 67, 255);
+$color3: rgba(8, 8, 97, 0.882);
+$colorRed: rgb(225, 7, 32);
+$colorYellow: rgb(233, 148, 11);
+$colorGreen: rgb(8, 176, 50);
+$colorblack: rgba(4, 4, 18, 0.907);
+
+@mixin button (){
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    &:hover{
+        transform: translate(-1dvw, -1dvw);
+        box-shadow: 10px 10px 0px 0 $colorblack;
+        cursor: pointer;
+        border-color: $color1;
+    }
+}
+
+@mixin notify (){
+    animation: notify .7s cubic-bezier(0.075, 0.82, 0.165, 1);
+    @keyframes notify {
+        0%{
+            transform: translateY(-100dvw);
+            opacity: 0%;
+        }
+    }
+}

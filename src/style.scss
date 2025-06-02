@@ -1,0 +1,367 @@
+@import "./variables.scss";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+::-webkit-scrollbar {
+	background-color: $colorblack;
+	width: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: $color1;
+	border-radius: 2dvw;
+}
+
+body {
+	font-size: 3.5dvw;
+	background-color: $bgColor;
+	font-family: $font;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	color: $fontColor;
+	.top {
+		width: 90dvw;
+		height: 36dvw;
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		flex-direction: column;
+		h1 {
+			font-size: 14dvw;
+			background-color: $color1;
+			display: grid;
+			place-items: center;
+			width: 100%;
+			border-radius: 20px;
+		}
+		.filters {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			height: 6dvw;
+			.filt {
+				border: 5px solid $color2;
+				width: 25%;
+				height: 100%;
+				display: grid;
+				place-items: center;
+				font-size: 3dvw;
+				font-weight: 700;
+				border-radius: 1000px;
+				@include button();
+			}
+			.select {
+				background-color: $color1;
+				border-color: $color1;
+			}
+		}
+	}
+
+	.projects {
+		width: 90dvw;
+		height: 70dvh;
+		.acabou {
+			opacity: 30%;
+			font-size: 15dvw;
+		}
+		.project {
+			margin-bottom: 4dvw;
+			@include button();
+			background-color: $color2;
+			height: 25%;
+			border-radius: 10px;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.color {
+				width: 8%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 10px 0px 0px 10px;
+				p {
+					color: white;
+					writing-mode: vertical-rl;
+					transform: rotate(180deg);
+					font-size: 20px; /* Ajuste conforme necessário */
+				}
+			}
+			.data {
+				width: 85%;
+				height: 90%;
+				display: flex;
+				align-items: start;
+				justify-content: space-around;
+				flex-direction: column;
+				.tagsAndDates {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					width: 90%;
+					text-align: center;
+					.tag {
+						background-color: $color3;
+						width: 20%;
+						border-radius: 20px;
+					}
+					.date {
+						width: 30%;
+						text-align: end;
+					}
+				}
+				.title {
+					height: 40%;
+				}
+				.description {
+					width: 90%;
+					height: 20%;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+			}
+		}
+	}
+
+	.topo {
+		width: 100%;
+		padding: 5dvw 0;
+		display: flex;
+		border-radius: 0% 0% 10px 10px;
+		align-items: center;
+		justify-content: space-evenly;
+		flex-direction: column;
+		.volts {
+			@include button();
+		}
+		.up {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 90%;
+		}
+		.title {
+			text-align: left;
+			width: 90%;
+			overflow-x: hidden;
+			height: 60%;
+			font-size: 10dvw;
+		}
+	}
+	.content > * {
+		margin: 15px 0;
+	}
+	.content {
+		width: 90%;
+		.tags {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			text-align: center;
+			.tag {
+				background-color: $color2;
+				width: 20%;
+				border-radius: 20px;
+			}
+			.date {
+				width: 30%;
+				text-align: end;
+			}
+		}
+		.links {
+			width: 95%;
+			background-color: $colorblack;
+			border: 2dvw solid $colorblack;
+			border-radius: 10px;
+			overflow-x: hidden;
+			p {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			a {
+				display: block;
+				color: $color1;
+				width: 80%;
+				overflow-x: hidden;
+				text-decoration: none;
+				@include button();
+			}
+		}
+		.images {
+			width: 100%;
+			height: 30dvw;
+
+			background-color: $colorblack;
+			border-radius: 25px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+		}
+		.documents {
+			width: 100%;
+			height: 30dvw;
+
+			background-color: $colorblack;
+			border-radius: 25px;
+		}
+		.description {
+			text-align: justify;
+		}
+	}
+	.comments {
+		display: flex;
+		align-items: start;
+		justify-content: center;
+		flex-direction: column;
+		width: 100%;
+		margin: 0 0 25dvw 0;
+		h1 {
+			font-size: 8dvw;
+		}
+		.comment {
+			background-color: $colorblack;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			flex-direction: column;
+			margin-top: 5dvw;
+			padding: 10px 0;
+			border-radius: 20px;
+			width: 85dvw;
+			& > * {
+				width: 90%;
+			}
+			.tope {
+				height: 7dvw;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				border-bottom: 2px solid $color1;
+			}
+			p {
+				text-align: justify;
+				margin: 10px 0;
+			}
+		}
+	}
+	.addComment {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 10dvh;
+		display: flex;
+		margin: 0;
+		border-radius: 20px 20px 0 0;
+		align-items: center;
+		justify-content: space-evenly;
+		background-color: $colorblack;
+		input {
+			background-color: $color3;
+			border: none;
+			color: $fontColor;
+			padding: 0 3dvw 0 3dvw;
+			outline: none;
+			width: 70%;
+			height: 50%;
+			border-radius: 100px;
+			font-size: 4dvw;
+			&::placeholder {
+				color: $color1;
+			}
+			&:focus {
+				background-color: $color2;
+				&::placeholder {
+					color: $fontColor;
+				}
+			}
+		}
+		.enviar {
+			background-color: $color1;
+			border-radius: 50%;
+			width: 8dvw;
+			height: 8dvw;
+			max-width: 50px;
+			max-height: 50px;
+			@include button();
+		}
+	}
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100dvw;
+		height: 100dvh;
+		.form-wrapper {
+			height: 50%;
+			width: 80%;
+			display: flex;
+			align-items: start;
+			justify-content: space-around;
+			flex-direction: column;
+			.setName {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				label {
+					font-size: 8dvw;
+					width: 50%;
+				}
+				input {
+					width: 50%;
+					padding: 2dvw;
+					font-size: 5dvw;
+					outline: none;
+					@include button;
+				}
+			}
+			.enviar {
+				width: 100%;
+				height: 15%;
+				font-size: 6dvw;
+				@include button;
+				font-weight: 700;
+				color: $colorblack;
+				background-color: $color1;
+			}
+			input {
+				border: none;
+				border-radius: 10px;
+			}
+			h1 {
+				font-size: 20dvw;
+			}
+		}
+	}
+	.notify{
+		position: fixed;
+		top: 10px;
+		background-color: red;
+		width: 80dvw;
+		height: 15dvw;
+		padding: 5dvw;
+		border-radius: 5dvw;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		background-color: $color2;
+		@include notify();
+		button{
+			@include button();
+			border: none;
+			background-color: $color1;
+			border-radius: 20pc;
+			width: 20dvw;
+			height: 40%;
+		}
+		display: none;
+	}
+}
