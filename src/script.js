@@ -242,7 +242,7 @@ async function drawSecondPage(id) {
 function formaterDate(date) {
 	const data = new Date(date);
 
-	const dia = String(data.getDate()).padStart(2, "0");
+	const dia = String(data.getDate() + 1).padStart(2, "0");
 	const mes = String(data.getMonth() + 1).padStart(2, "0"); // Janeiro = 0
 	const ano = data.getFullYear();
 
@@ -259,7 +259,7 @@ function setDays(date) {
 	agora.setHours(0, 0, 0, 0);
 
 	const diffMs = dataEvento - agora;
-	const diffDias = Math.round(diffMs / (1000 * 60 * 60 * 24));
+	const diffDias = Math.round(diffMs / (1000 * 60 * 60 * 24) + 1);
 
 	if (diffDias == 0) {
 		return [diffDias, "É HJ!"];
