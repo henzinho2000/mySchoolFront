@@ -12,7 +12,7 @@ $colorblack: rgba(4, 4, 18, 0.907);
 @mixin button (){
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
     &:hover{
-        transform: translate(-1dvw, -1dvw);
+        transform: translate(-5px, -5px);
         box-shadow: 10px 10px 0px 0 $colorblack;
         cursor: pointer;
         border-color: $color1;

@@ -62,7 +62,7 @@ body {
   transition: all 0.3s ease;
 }
 .top .filters .filt:hover {
-  transform: translate(-1dvw, -1dvw);
+  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 0px 0 rgba(4, 4, 18, 0.907);
   cursor: pointer;
   border-color: rgb(255, 118, 38);
@@ -96,7 +96,7 @@ body {
   transition: transform 0.2s ease;
 }
 .projects .project:hover {
-  transform: translate(-1dvw, -1dvw);
+  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 0px 0 rgba(4, 4, 18, 0.907);
   cursor: pointer;
   border-color: rgb(255, 118, 38);
@@ -179,7 +179,7 @@ body {
   font-weight: 600;
 }
 .topo .up .volts:hover {
-  transform: translate(-1dvw, -1dvw);
+  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 0px 0 rgba(4, 4, 18, 0.907);
   cursor: pointer;
   border-color: rgb(255, 118, 38);
@@ -241,7 +241,7 @@ body {
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .content .links a:hover {
-  transform: translate(-1dvw, -1dvw);
+  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 0px 0 rgba(4, 4, 18, 0.907);
   cursor: pointer;
   border-color: rgb(255, 118, 38);
@@ -343,7 +343,7 @@ body {
   justify-content: center;
 }
 .addComment .enviar:hover {
-  transform: translate(-1dvw, -1dvw);
+  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 0px 0 rgba(4, 4, 18, 0.907);
   cursor: pointer;
   border-color: rgb(255, 118, 38);
@@ -391,7 +391,7 @@ body {
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .container .form-wrapper .setName input:hover {
-  transform: translate(-1dvw, -1dvw);
+  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 0px 0 rgba(4, 4, 18, 0.907);
   cursor: pointer;
   border-color: rgb(255, 118, 38);
@@ -410,7 +410,7 @@ body {
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .container .form-wrapper .enviar:hover {
-  transform: translate(-1dvw, -1dvw);
+  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 0px 0 rgba(4, 4, 18, 0.907);
   cursor: pointer;
   border-color: rgb(255, 118, 38);
@@ -452,7 +452,7 @@ body {
   align-self: flex-end;
 }
 .notify button:hover {
-  transform: translate(-1dvw, -1dvw);
+  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 0px 0 rgba(4, 4, 18, 0.907);
   cursor: pointer;
   border-color: rgb(255, 118, 38);
