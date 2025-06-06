@@ -28,7 +28,7 @@
 
 		<script>
 			const name = localStorage.getItem("name");
-			if(name == "" || name == null){
+			if(!name?.trim()){
 				const button = document.querySelector(".enviar");
 				const name = document.querySelector(".name");
 	

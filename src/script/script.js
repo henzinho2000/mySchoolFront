@@ -1,14 +1,26 @@
-if (
-	localStorage.getItem("name") == "" ||
-	localStorage.getItem("name") == null
-) {
-	window.location.assign("./oi.html");
+function verifyLocalStorage(){
+	const name = localStorage.getItem("name");
+	
+	if (!name?.trim()) {
+		window.location.assign("./oi.html");
+	}
 }
-console.log(localStorage.getItem("name"));
+verifyLocalStorage();
 
 const body = document.querySelector("body");
 
+import { tools } from "./tools.js";
+const {setNotify, setDays, formaterDate} = tools;
+
 async function drawProjects(turma) {
+	window.selecter = selecter;
+	function selecter(buttonClicked) {
+		const buttons = document.querySelectorAll(".filt");
+		buttons.forEach((button) => button.classList.remove("select"));
+		buttonClicked.classList.add("select");
+		drawProjects(buttonClicked.classList[1]);
+	}
+
 	body.innerHTML = `
     <article class="top">
     <h1>mySchool</h1>
@@ -29,7 +41,6 @@ async function drawProjects(turma) {
 	}else{
         url = `https://myschoollback.onrender.com/projects/class/${turma}`;
     }
-
 	const response = await fetch(url);
 
 	const projects = document.querySelector(".projects");
@@ -92,7 +103,7 @@ async function drawSecondPage(id) {
 		tags,
 	} = await (await fetch(`https://myschoollback.onrender.com/projects/id/${id}`)).json();
 
-	const days = setDays(date)[0];
+	const days = setDays(date);
 
 	let color = "";
 
@@ -117,7 +128,7 @@ async function drawSecondPage(id) {
             <div class="tag">${tags[0]}</div>
             <div class="tag">${tags[1]}</div>
             <div class="tag">${tags[2]}</div>
-            <div class="tag">${subjects}</div>
+            <div class="tag">${days[1]}</div>
         </section>
 
         <section class="linkses"></section>
@@ -207,22 +218,24 @@ async function drawSecondPage(id) {
 	function addComment() {
 		const btnEnviar = document.querySelector(".enviar");
 		btnEnviar.addEventListener("click", async () => {
-			const text = document.querySelector(".newComment").value;
+			const text = document.querySelector(".newComment").value.trim();
 			if (text.length > 0) {
-				const response = await (
-					await fetch("https://myschoollback.onrender.com/comments/", {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-						},
-						body: JSON.stringify({
-							project_id: id,
-							text: text,
-							name: localStorage.getItem("name"),
-						}),
-					})
-				).json();
+				await fetch("https://myschoollback.onrender.com/comments/", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						project_id: id,
+						text: text,
+						name: localStorage.getItem("name"),
+					}),
+				});
+				document.querySelector(".newComment").value = "";
 				setComments();
+				setNotify("Novo comentário adicionado");
+			}else{
+				setNotify("Por favor adicione um comentário");
 			}
 		});
 	}
@@ -237,44 +250,6 @@ async function drawSecondPage(id) {
 	voltar.addEventListener("click", () => {
 		drawProjects("ambos");
 	});
-}
-
-function formaterDate(date) {
-	const data = new Date(date);
-
-	const dia = String(data.getDate() + 1).padStart(2, "0");
-	const mes = String(data.getMonth() + 1).padStart(2, "0"); // Janeiro = 0
-	const ano = data.getFullYear();
-
-	const dataFormatada = `${dia}/${mes}/${ano}`;
-	return dataFormatada;
-}
-
-function setDays(date) {
-	const dataEvento = new Date(date);
-	const agora = new Date();
-
-	// Zerar as horas para comparar apenas o dia
-	dataEvento.setHours(0, 0, 0, 0);
-	agora.setHours(0, 0, 0, 0);
-
-	const diffMs = dataEvento - agora;
-	const diffDias = Math.round(diffMs / (1000 * 60 * 60 * 24) + 1);
-
-	if (diffDias == 0) {
-		return [diffDias, "É HJ!"];
-	} else if (diffDias <= -1) {
-		return [diffDias, "JÁ FOI"];
-	} else {
-		return [diffDias, `${diffDias} DIA(S)`];
-	}
-}
-
-function selecter(buttonClicked) {
-	const buttons = document.querySelectorAll(".filt");
-	buttons.forEach((button) => button.classList.remove("select"));
-	buttonClicked.classList.add("select");
-	drawProjects(buttonClicked.classList[1]);
 }
 
 drawProjects("ambos");
