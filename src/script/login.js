@@ -1,11 +1,12 @@
 import {tools} from "./tools.js";
 const {setNotify, searchPassword} = tools;
 
-function verifyLocalStorage(){
-	const name = localStorage.getItem("name");
-	
-	if (!name?.trim()) {
-		window.location.assign("./oi.html");
+async function verifyLocalStorage(){
+	const password = localStorage.getItem("password");
+	const truePassword = await searchPassword(password);
+
+	if(truePassword.login) {
+		window.location.assign("./adm.html");
 	}
 }
 verifyLocalStorage();
@@ -22,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(truePassword.login);
             setNotify("Senha Incorreta");
         } else {
-            window.location.assign("./index.html");
+            localStorage.setItem("password", password);
+            window.location.assign("./adm.html");
         }
     });
 });

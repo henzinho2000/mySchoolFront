@@ -1,0 +1,565 @@
+@import "./variables.scss";
+
+// Reset global
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+// Scrollbar personalizada
+::-webkit-scrollbar {
+	background-color: $colorblack;
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: $color1;
+	border-radius: 4px;
+}
+
+// Base do body
+body {
+	font-size: clamp(14px, 3.5vw, 18px);
+	background-color: $bgColor;
+	font-family: $font;
+	color: $fontColor;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+// Seção superior
+.top {
+	width: 90vw;
+	max-width: 400px;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	h1 {
+		font-size: clamp(40px, 12vw, 60px);
+		background-color: $color1;
+		color: $colorblack;
+		text-align: center;
+		padding: 15px;
+		border-radius: 15px;
+		font-weight: 700;
+	}
+
+	.filters {
+		display: flex;
+		gap: 10px;
+		width: 100%;
+
+		.filt {
+			flex: 1;
+			border: 3px solid $color2;
+			padding: 12px 8px;
+			text-align: center;
+			font-size: clamp(12px, 3vw, 16px);
+			font-weight: 700;
+			border-radius: 25px;
+			background-color: transparent;
+			color: $fontColor;
+			@include button();
+			transition: all 0.3s ease;
+
+			&.select {
+				background-color: $color1;
+				border-color: $color1;
+				color: $colorblack;
+			}
+		}
+	}
+}
+
+// Seção de projetos
+.projects {
+	width: 90vw;
+	max-width: 400px;
+	flex: 1;
+	padding-bottom: 120px; // Espaço para o botão fixo
+
+	.acabou {
+		opacity: 0.3;
+		font-size: clamp(30px, 10vw, 50px);
+		text-align: center;
+		margin-top: 50px;
+	}
+
+	.project {
+		margin-bottom: 20px;
+		background-color: $color2;
+		border-radius: 12px;
+		min-height: 120px;
+		display: flex;
+		overflow: hidden;
+		@include button();
+		transition: transform 0.2s ease;
+
+		&:active {
+			transform: scale(0.98);
+		}
+
+		.color {
+			width: 30px;
+			background-color: $color1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			p {
+				color: $colorblack;
+				writing-mode: vertical-rl;
+				transform: rotate(180deg);
+				font-size: 14px;
+				font-weight: 600;
+			}
+		}
+
+		.data {
+			flex: 1;
+			padding: 15px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			.tagsAndDates {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 10px;
+
+				.tag {
+					background-color: $color3;
+					padding: 4px 12px;
+					border-radius: 15px;
+					font-size: 12px;
+					font-weight: 600;
+				}
+
+				.date {
+					font-size: 12px;
+					opacity: 0.8;
+				}
+			}
+
+			.title {
+				font-size: clamp(16px, 4vw, 20px);
+				font-weight: 700;
+				margin-bottom: 8px;
+				line-height: 1.2;
+			}
+
+			.description {
+				font-size: 14px;
+				opacity: 0.9;
+				line-height: 1.3;
+				display: -webkit-box;
+				line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+		}
+	}
+}
+
+// Topo da página de detalhes
+.topo {
+	width: 100%;
+	padding: 20px;
+	background-color: $color2;
+	border-radius: 0 0 15px 15px;
+
+	.up {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 15px;
+
+		.volts {
+			@include button();
+			background-color: $color1;
+			color: $colorblack;
+			padding: 8px 16px;
+			border-radius: 20px;
+			font-weight: 600;
+		}
+	}
+
+	.title {
+		font-size: clamp(24px, 8vw, 36px);
+		font-weight: 700;
+		line-height: 1.2;
+		word-break: break-word;
+	}
+}
+
+// Conteúdo principal
+.content {
+	width: 90vw;
+	max-width: 400px;
+	padding: 20px 0;
+
+	> * {
+		margin-bottom: 20px;
+	}
+
+	.tags {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.tag {
+			background-color: $color2;
+			padding: 8px 16px;
+			border-radius: 20px;
+			font-weight: 600;
+		}
+
+		.date {
+			opacity: 0.8;
+			font-size: 14px;
+		}
+	}
+
+	.links {
+		background-color: $colorblack;
+		border-radius: 12px;
+		padding: 15px;
+		overflow: hidden;
+
+		p {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 10px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		a {
+			color: $color1;
+			text-decoration: none;
+			font-weight: 500;
+			flex: 1;
+			margin-right: 10px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			@include button();
+		}
+	}
+
+	.images,
+	.documents {
+		width: 100%;
+		height: 200px;
+		background-color: $colorblack;
+		border-radius: 15px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
+
+	.description {
+		text-align: justify;
+		line-height: 1.5;
+		font-size: 15px;
+	}
+}
+
+// Comentários
+.comments {
+	width: 90vw;
+	max-width: 400px;
+	margin-bottom: 120px;
+
+	h1 {
+		font-size: clamp(20px, 6vw, 28px);
+		margin-bottom: 20px;
+		font-weight: 700;
+	}
+
+	.comment {
+		background-color: $colorblack;
+		border-radius: 15px;
+		padding: 15px;
+		margin-bottom: 15px;
+
+		.tope {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding-bottom: 10px;
+			border-bottom: 2px solid $color1;
+			margin-bottom: 10px;
+			font-weight: 600;
+		}
+
+		p {
+			text-align: justify;
+			line-height: 1.4;
+			margin: 0;
+		}
+	}
+}
+
+// Botão de adicionar comentário
+.addComment {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	height: 80px;
+	background-color: $colorblack;
+	border-radius: 20px 20px 0 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
+	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+
+	input {
+		flex: 1;
+		background-color: $color3;
+		border: none;
+		color: $fontColor;
+		padding: 12px 16px;
+		border-radius: 25px;
+		font-size: 16px;
+		margin-right: 15px;
+		outline: none;
+		width: 70%;
+
+		&::placeholder {
+			color: $color1;
+			opacity: 0.7;
+		}
+
+		&:focus {
+			background-color: $color2;
+
+			&::placeholder {
+				color: $fontColor;
+				opacity: 0.5;
+			}
+		}
+	}
+
+	.enviar {
+		background-color: $color1;
+		border-radius: 50%;
+		width: 45px;
+		height: 45px;
+		border: none;
+		@include button();
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&:active {
+			transform: scale(0.95);
+		}
+	}
+}
+
+// Container de formulário
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	padding: 20px;
+
+	.form-wrapper {
+		width: 100%;
+		max-width: 350px;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+
+		h1 {
+			font-size: clamp(32px, 18vw, 80px);
+			text-align: center;
+			font-weight: 700;
+		}
+
+		.setName {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+
+			label {
+				font-size: clamp(18px, 5vw, 24px);
+				font-weight: 600;
+			}
+
+			input {
+				padding: 15px;
+				font-size: 16px;
+				border: 2px solid $color2;
+				border-radius: 10px;
+				background-color: transparent;
+				color: $fontColor;
+				outline: none;
+				@include button();
+
+				&:focus {
+					border-color: $color1;
+				}
+			}
+		}
+
+		.enviar {
+			padding: 15px;
+			font-size: 18px;
+			font-weight: 700;
+			background-color: $color1;
+			color: $colorblack;
+			border: none;
+			border-radius: 10px;
+			@include button();
+
+			&:active {
+				transform: scale(0.98);
+			}
+		}
+	}
+}
+
+// Notificações
+.notify {
+	position: fixed;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90vw;
+	max-width: 350px;
+	background-color: $color2;
+	padding: 20px;
+	border-radius: 15px;
+	display: none;
+	flex-direction: column;
+	gap: 15px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	@include notify();
+
+	button {
+		@include button();
+		border: none;
+		background-color: $color1;
+		color: $colorblack;
+		border-radius: 8px;
+		padding: 10px 20px;
+		font-weight: 600;
+		align-self: flex-end;
+
+		&:active {
+			transform: scale(0.95);
+		}
+	}
+}
+
+.projetos {
+	width: clamp(24px, 90%, 450px);
+	.project {
+		display: flex;
+		width: 100%;
+		height: 80px;
+		align-items: center;
+		justify-content: center;
+		background-color: $color2;
+		color: $fontColor;
+		font-size: clamp(20px, 6dvw, 30px);
+		border-radius: 12px;
+    margin-bottom: 15px;
+		@include button();
+	}
+	.name {
+		width: 70%;
+		margin: 0 5%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.line {
+		width: 5px;
+		height: 60%;
+		background-color: $fontColor;
+		border-radius: 5px;
+	}
+	.fa-trash {
+		width: 20%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+.escolha{
+  position: fixed;
+  top: 50dvh;
+  left: 50dvw;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: $fontColor;
+  color: $colorblack;
+  padding: 0 10px;
+  border-radius: 2dvw;
+  h1{
+    
+  }
+  .inline{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    .button{
+      width: 45%;
+      height: 30px;
+      border-radius: 10px;
+      display: grid;
+      align-items: center;
+      text-align: center;
+      background-color: $colorRed;
+    }
+  }
+}
+
+// Media queries para diferentes tamanhos de celular
+@media (max-width: 320px) {
+	.top .filters .filt {
+		font-size: 11px;
+		padding: 10px 6px;
+	}
+
+	.projects .project {
+		min-height: 100px;
+
+		.data {
+			padding: 12px;
+		}
+	}
+}
+
+@media (min-width: 480px) {
+	.top,
+	.projects,
+	.content,
+	.comments {
+		max-width: 450px;
+	}
+}

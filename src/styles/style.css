@@ -291,7 +291,6 @@ body {
   text-align: justify;
   line-height: 1.4;
   margin: 0;
-
 }
 
 .addComment {
@@ -460,6 +459,81 @@ body {
 }
 .notify button:active {
   transform: scale(0.95);
+}
+
+.projetos {
+  width: clamp(24px, 90%, 450px);
+}
+.projetos .project {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(38, 67, 255);
+  color: rgb(255, 255, 255);
+  font-size: clamp(20px, 6dvw, 30px);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.projetos .project:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 10px 10px 0px 0 rgba(4, 4, 18, 0.907);
+  cursor: pointer;
+  border-color: rgb(255, 118, 38);
+}
+.projetos .name {
+  width: 70%;
+  margin: 0 5%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.projetos .line {
+  width: 5px;
+  height: 60%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+.projetos .fa-trash {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.escolha {
+  position: fixed;
+  top: 50dvh;
+  left: 50dvw;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  color: rgba(4, 4, 18, 0.907);
+  padding: 0 10px;
+  border-radius: 2dvw;
+}
+.escolha .inline {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.escolha .inline .button {
+  width: 45%;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(225, 7, 32);
 }
 
 @media (max-width: 320px) {
