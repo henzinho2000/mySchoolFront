@@ -308,6 +308,9 @@ body {
 			line-height: 1.4;
 			margin: 0;
 		}
+		.content {
+			width: 100%;
+		}
 	}
 }
 
@@ -480,7 +483,7 @@ body {
 		color: $fontColor;
 		font-size: clamp(20px, 6dvw, 30px);
 		border-radius: 12px;
-    margin-bottom: 15px;
+		margin-bottom: 15px;
 		@include button();
 	}
 	.name {
@@ -504,39 +507,36 @@ body {
 		align-items: center;
 	}
 }
-.escolha{
-  position: fixed;
-  top: 50dvh;
-  left: 50dvw;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-  background-color: $fontColor;
-  color: $colorblack;
-  padding: 0 10px;
-  border-radius: 2dvw;
-  h1{
-    
-  }
-  .inline{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    .button{
-      width: 45%;
-      height: 30px;
-      border-radius: 10px;
-      display: grid;
-      align-items: center;
-      text-align: center;
-      background-color: $colorRed;
-    }
-  }
+.escolha {
+	position: fixed;
+	top: 50dvh;
+	left: 50dvw;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
+	background-color: $fontColor;
+	color: $colorblack;
+	padding: 0 10px;
+	border-radius: 2dvw;
+	.inline {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		justify-content: space-between;
+		.button {
+			width: 45%;
+			height: 30px;
+			border-radius: 10px;
+			display: grid;
+			align-items: center;
+			text-align: center;
+			background-color: $colorRed;
+		}
+	}
 }
 
 // Media queries para diferentes tamanhos de celular
